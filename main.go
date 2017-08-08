@@ -48,7 +48,12 @@ func getToken(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, t.(string))
 }
 
+func hc(w http.ResponseWriter, r *http.Request) {
+}
+
 func main() {
+	http.HandleFunc("/hc", hc)
+
 	http.HandleFunc("/fb-dialog", showDialog)
 	http.HandleFunc("/fb-token", getToken)
 	http.ListenAndServe(":8080", nil)
